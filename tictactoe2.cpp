@@ -32,7 +32,6 @@ void table() {
     cout << "|  " << space[2][0] << "  |  " << space[2][1] << "  |  " << space[2][2] << "  |" << endl;
     cout << "|_____|_____|_____|" << endl;
     cout << endl;
-
 }
 
 
@@ -45,8 +44,9 @@ void inv() {
         cout << " Player 1(X) masukkan nomer :";
         cin >> digit;
         cout << endl;  // Menambahkan baris kosong setelah pemain memasukkan angka
-        
-    } else if (input == 'O') {
+    }
+	
+	else if (input == 'O') {
         cout << " Player 2(O) masukkan nomer :";
         cin >> digit;
         cout << endl;  // Menambahkan baris kosong setelah pemain memasukkan angka
@@ -60,16 +60,20 @@ void inv() {
         // Memeriksa apakah sel di papan tersebut belum diisi
         if (space[row][col] != 'X' && space[row][col] != 'O') {
             space[row][col] = input;  // Menetapkan simbol (X atau O) ke sel papan yang sesuai
-            input = (input == 'X') ? 'O' : 'X';  // Mengganti giliran pemain
-        } else {
+            input = (input == 'X') ? 'O' : 'X';  // Mengganti giliran pemain  
+        }
+		
+		else {
             cout << "Kotak telah diisi!" << endl;  // Jika sel sudah diisi, tampilkan pesan kesalahan
             inv();  // Panggil kembali fungsi inv untuk meminta input lagi
         }
-    } else {
+    }
+	
+	else {
         cout << "input INVALID" << endl;  // Jika input tidak valid (tidak dalam rentang 1-9), tampilkan pesan kesalahan
         inv();  // Panggil kembali fungsi inv untuk meminta input lagi
     }
-    
+
     table();  // Setelah memperbarui papan, tampilkan papan terbaru ke layar
 }
 
@@ -80,9 +84,8 @@ bool cek() {
 	//membuat kondisi untuk mengecek kemenangan
 	
 	//untuk elemen lurus
-	
     for (int i = 0; i < 3; i++) {
-    	
+
 	// image screenshot
 	// jika elemen 0,0 sama dengan 0,1   dan elemen 0,0 sama dengan 0,2
         if (space[i][0] == space[i][1] && space[i][0] == space[i][2] || //<<- horizontal
@@ -95,9 +98,9 @@ bool cek() {
         space[0][2] == space[1][1] && space[1][1] == space[2][0]) { //line2
         return true;
     }
-    
+
     //----------
-    
+
 	//untuk mengecek keberlangsungan game
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
@@ -109,7 +112,7 @@ bool cek() {
             }
         }
     }
-    
+
 	// jika kondisi tidak terpenuhi maka game seri atau draw
     draw = true;
     return true;
@@ -147,4 +150,3 @@ int main() {
     
     return 0;
 }
-
